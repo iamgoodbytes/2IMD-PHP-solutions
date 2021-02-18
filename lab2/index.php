@@ -7,7 +7,7 @@
     
     function canLogin($username,$password) {
 
-        if ($username == "ninja" && $password == "12345") {
+        if ($username === "Development4" && $password == "IMD") {
             return true; 
         } else { 
             return false;
@@ -27,8 +27,7 @@
         $_SESSION["username"] = $username;
 
     } else {
-        
-        //Error
+
         $error = true;
     }
 
@@ -51,21 +50,21 @@
         <a href="#">Get desktop</a>
         <a href="#">Try prime</a>
         <a href="#" class="loggedIn">
-        <div class="user--avatar"><img src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=ddcb7ec744fc63472f2d9e19362aa387" alt=""></div>
-        <?php if (isset($_SESSION['username'])): ?>
-        <h3 class="user--name"><?php echo $_SESSION['username'] ?></h3>
-        <?php else: ?>
-        <h3 class="user--name">Username here</h3>
-        <?php endif; ?>
-
-        <span class="user--status">Watching dakotaz</span>
+            <?php if (isset($_SESSION['username'])): ?>
+                <div class="user--avatar"><img src="images/php.png" alt=""></div>
+                 <h3 class="user--name"><?php echo $_SESSION['username'] ?></h3>
+                 <span class="user--status">Watching Goodbytes</span>
+            <?php else: ?>
+                <div class="user--avatar"><img src="images/guest.png" alt=""></div>
+                <h3 class="user--name" style="margin:auto;">Not logged in</h3>
+            <?php endif; ?>
         </a>
         <a href="index.php">Log out?</a>
     </nav>    
     </header>
 
     <div id="app">
-        <form action="index.php" method="post">
+        <form id="loginForm" action="index.php" method="post">
             <h1>Log in to Twitch</h1>
             <nav class="nav--login">
                 <a href="#" id="tabLogin">Log in</a>
@@ -95,7 +94,7 @@
             <input type="text" id="email">
         </div>
         
-        <input type="submit" value="log in" class="btn">
+        <a href="" class="btn" id="btnSubmit" onclick='document.forms["loginForm"].submit(); return false;'>Log In</a>
         </form>
     </div>
     
