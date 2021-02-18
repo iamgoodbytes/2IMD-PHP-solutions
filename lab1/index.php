@@ -1,136 +1,141 @@
 <?php
-const distance = 100;
+    /*
+        todo1: maak een multidimensionale array met daarin alle checkins zoals te zien op screenshots/screenshot1.png
+            - denk na over welke data er in je array moet zitten
+            - soms voeg je een foto toe, soms niet (tip: gebruik voor je foto's pexels.com of een andere gratis leverancier)
+            - op screenshots/screenshot2.jpeg kan je zien wat bedoelt wordt met een checkin met foto
+            - werk met isset() of empty() om de foto soms wel en soms niet af te drukken
 
-$checkins = [
-    [
-        'avatar' => 'https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?cs=srgb&dl=pexels-mentatdgt-1220757.jpg&fm=jpg',
-        'name' => 'Jesse',
-        'company' => 'Assembly 3.0',
-        'city' => 'San Fransisco',
-        'country' => 'CA',
-        'message' => 'Le work.',
-        'picture' => '',
-        'distance' => 10
-    ],
-    [
-        'avatar' => 'https://images.pexels.com/photos/2785219/pexels-photo-2785219.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-        'name' => 'Michal',
-        'company' => 'Voxer',
-        'city' => 'San Fransisco',
-        'country' => 'CA',
-        'message' => '',
-        'picture' => '',
-        'distance' => 8
-    ],
-    [
-        'avatar' => 'https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-        'name' => 'Petr',
-        'company' => 'ROXY NoD',
-        'city' => 'Prague',
-        'country' => 'Czech Republic',
-        'message' => '',
-        'picture' => '',
-        'distance' => 22
-    ],
-    [
-        'avatar' => 'https://images.pexels.com/photos/4061379/pexels-photo-4061379.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-        'name' => 'Jaroslav',
-        'company' => 'Brno Hlavni nadrazi',
-        'city' => 'Brno',
-        'country' => 'Czech Republic',
-        'message' => '',
-        'picture' => '',
-        'distance' => 28
-    ],
-    [
-        'avatar' => 'https://images.pexels.com/photos/3370021/pexels-photo-3370021.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-        'name' => 'Jesse',
-        'company' => 'The Mill',
-        'city' => 'San Fransisco',
-        'country' => 'CA',
-        'message' => 'Loving the view',
-        'picture' => 'https://images.pexels.com/photos/3022417/pexels-photo-3022417.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-        'distance' => 2
-    ],
-    [
-        'avatar' => 'https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?cs=srgb&dl=pexels-mentatdgt-1220757.jpg&fm=jpg',
-        'name' => 'Jesse',
-        'company' => 'Assembly 3.0',
-        'city' => 'San Fransisco',
-        'country' => 'CA',
-        'message' => 'Le work.',
-        'picture' => '',
-        'distance' => 10
-    ],
-    [
-        'avatar' => 'https://images.pexels.com/photos/2785219/pexels-photo-2785219.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-        'name' => 'Michal',
-        'company' => 'Voxer',
-        'city' => 'San Fransisco',
-        'country' => 'CA',
-        'message' => '',
-        'picture' => '',
-        'distance' => 8
-    ],
-    [
-        'avatar' => 'https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-        'name' => 'Petr',
-        'company' => 'ROXY NoD',
-        'city' => 'Prague',
-        'country' => 'Czech Republic',
-        'message' => '',
-        'picture' => '',
-        'distance' => 22
-    ],
-    [
-        'avatar' => 'https://images.pexels.com/photos/4061379/pexels-photo-4061379.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-        'name' => 'Jaroslav',
-        'company' => 'Brno Hlavni nadrazi',
-        'city' => 'Brno',
-        'country' => 'Czech Republic',
-        'message' => 'It has been a wonderful trip so far',
-        'picture' => '',
-        'distance' => 28
-    ]
-];
-    
 
-?><!DOCTYPE html>
+        todo2: werk met een constant DISTANCE waarmee je kan instellen wat de maximale afstand is om checkins voor te tonen
+            - je zal in je array een extra stukje data moeten bijvoegen om deze afstand mee te betrekken in je checkins
+
+    */
+
+    //todo2
+    define("MAX_DISTANCE", 5000000);
+
+    //todo1
+    $userCheckins = [
+        [
+            "img_profile" => "https://bit.ly/2ZowHfQ",
+            "sticker" => "",
+            "username" => "Jesse",
+            "checkin" => "Assembly 3.0",
+            "location" => "San Francisco, CA",
+            "comment" => "Le work.",
+            "image" => "",
+            "distance" => ""
+        ],
+        [
+            "img_profile" => "",
+            "sticker" => "https://bit.ly/2NeKhjl",
+            "username" => "Michal",
+            "checkin" => "Voxer",
+            "location" => "San Francisco, CA",
+            "comment" => "",
+            "image" => "",
+            "distance" => ""
+        ],
+        [
+            "img_profile" => "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            "sticker" => "",
+            "username" => "Petr",
+            "checkin" => "Roxy/NoD",
+            "location" => "Prague, Czech Republic",
+            "comment" => "",
+            "image" => "",
+            "distance" => ""
+        ],
+        [
+            "img_profile" => "",
+            "sticker" => "",
+            "username" => "Kyle",
+            "checkin" => "Musuée du Louvre",
+            "location" => "Paris, France",
+            "comment" => "",
+            "image" => "https://www.museumnext.com/wp-content/uploads/2019/01/louvre.jpg",
+            "distance" => ""
+        ],
+    ];
+
+?>
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Swarm App</title>
-    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <?php require_once('header.inc.php');?>
-    <main>
-        <?php
-        foreach($checkins as $checkin){
-            if($checkin['distance']<=distance){
-                echo '<div class="checkin">';
-                echo '<div class="avatar">';
-                echo '<img src="'.$checkin['avatar'].'" alt="avatar of '.$checkin['name'].'">';
-                echo '</div>';
-                echo '<div class="info">';
-                echo '<p class="name">'.$checkin['name'].'</p>';
-                echo '<p class="company">'.$checkin['company'].'</p>';
-                echo '<p class="location">'.$checkin['city'].', '.$checkin['country'].'</p>';
-                if(!empty($checkin['message'])){
-                    echo '<p class="post">'.$checkin['message'].'</p>';
-                }
-                if(!empty($checkin['picture'])){
-                    echo '<img src="'.$checkin['picture'].'" alt="picture from '.$checkin['name'].'">';
-                }
-                echo '</div>';
-                echo '</div>';
+    <?php    include 'header.inc.php';?>
+    
+    <div id="posts">
+    
+    <?php
+    foreach ($userCheckins as $userCheckin) {
+        foreach ($userCheckin as $attribute => $value) {
+            switch($attribute){
+                case "img_profile":
+
+                    if(empty($value)){
+                        $img_profile = "https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg";
+                    } else{
+                        $img_profile = $value;
+                    }
+                    break;
+
+                case "sticker":
+                    $sticker = $value;
+                    break;
+
+                case "username":
+                    $username = $value;
+                    break;
+
+                case "checkin":
+                    $checkin = $value;
+                    break;
+
+                case "location":
+                    $location = $value;
+                    break;
+
+                case "comment":
+                    $comment = $value;
+                    break;
+
+                case "image":
+                    $image = $value;
+                    break;
+
             }
         }
-        ?>
-    </main>
-    <?php require_once('footer.inc.php');?>
-    
+        echo 
+        "<div class=\"post_wrapper\">
+        <div class=\"image_wrapper\">
+            <img src=\"". $img_profile ."\" class=\"img_profile\">
+            ".(!empty($sticker)? "<img src=\"". $sticker ."\" class=\"img_sticker\">":"")."
+        </div>
+        
+        <div class=\"text_wrapper\">
+            <p class=\"username\">". $username ."</p>
+            <p class=\"checkin\">". $checkin ."</p>
+            <p class=\"location\">". $location ."</p>
+            <p class=\"comment\">". $comment ."</p>
+            ".(!empty($image)? "<img src=\"".$image."\" class=\"img_post\"":"")."
+            <div class=\"divider\"></div>
+        </div>
+        </div>";
+    }
+    ?>
+
+    </div>
+    <?php include 'footer.inc.php'?>
 </body>
 </html>
