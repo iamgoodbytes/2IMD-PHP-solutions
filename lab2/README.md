@@ -7,4 +7,4 @@
 # Login Credentials
 
     Username: Development4
-    Password: IMD2021
+    Password: IMD
