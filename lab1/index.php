@@ -108,8 +108,8 @@
     <?php require_once('header.inc.php');?>
     <main>
         <?php
-        foreach($checkins as $checkin){
-            if($checkin['distance']<=distance){
+        foreach($checkins as $checkin) {
+            if($checkin['distance'] <= DISTANCE) {
                 echo '<div class="checkin">';
                 echo '<div class="avatar">';
                 echo '<img src="'.$checkin['avatar'].'" alt="avatar of '.$checkin['name'].'">';
