@@ -1,53 +1,53 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     font-family: sans-serif;
 }
 
-header{
+header {
     background-color: orange;
     position: fixed;
     top: 0;
     width: 100%;
 }
 
-header h1{
+header h1 {
     padding: .64em;
     color: #fff;
 }
 
-.name{
+.name {
     color: rgb(112, 112, 112);
-    padding:.2em 0;
+    padding: .2em 0;
     font-weight: bold;
 }
 
-.company{
+.company {
     color: orange;
 }
 
-.location{
+.location {
     color: rgb(155, 155, 155);
-    padding:.1em 0;
+    padding: .1em 0;
 }
 
-.info{
+.info {
     border-bottom: 1px solid rgb(155, 155, 155);
     padding: .6em 1em .5em 0em;
     margin-left: 1em;
 }
 
 
-img{
+img {
     width: 100%;
     padding-top: .2em;
 }
 
-footer{
+footer {
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -56,32 +56,30 @@ footer{
     background-color: #f2f3e9;
 }
 
-.checkin{
+.checkin {
     display: flex;
     align-items: flex-start;
 }
 
-.checkin:last-child{
+.checkin:last-child {
     margin-bottom: 2em;
 }
 
-.checkin:first-child{
+.checkin:first-child {
     margin-top: 5em;
 }
 
-.avatar{
+.avatar {
     flex: 1;
-    padding: .6em 0em  0em;
+    padding: .6em 0em 0em;
     margin-left: .4em;
 }
 
-.avatar img{
+.avatar img {
     border-radius: 100%;
     width: 100%;
 }
 
-.info{
+.info {
     flex: 5;
 }
-
-
