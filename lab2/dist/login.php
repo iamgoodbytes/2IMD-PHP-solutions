@@ -1,3 +1,25 @@
+<?php
+  function canLogin($username, $password){
+    if($username === ninja && $password === "12345"){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+    if(!empty($_POST)){
+      //er is verzonden
+      $username = $_POST["username"];
+      $password = $_POST["password"];
+      if(canLogin($username, $password)){
+        //LOGIN
+      } else{
+        //ERROR
+        $error = true;
+      }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
