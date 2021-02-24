@@ -1,0 +1,85 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+header {
+    background-color: orange;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+header h1 {
+    padding: .64em;
+    color: #fff;
+}
+
+.name {
+    color: rgb(112, 112, 112);
+    padding: .2em 0;
+    font-weight: bold;
+}
+
+.company {
+    color: orange;
+}
+
+.location {
+    color: rgb(155, 155, 155);
+    padding: .1em 0;
+}
+
+.info {
+    border-bottom: 1px solid rgb(155, 155, 155);
+    padding: .6em 1em .5em 0em;
+    margin-left: 1em;
+}
+
+
+img {
+    width: 100%;
+    padding-top: .2em;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: .5em;
+    background-color: #f2f3e9;
+}
+
+.checkin {
+    display: flex;
+    align-items: flex-start;
+}
+
+.checkin:last-child {
+    margin-bottom: 2em;
+}
+
+.checkin:first-child {
+    margin-top: 5em;
+}
+
+.avatar {
+    flex: 1;
+    padding: .6em 0em 0em;
+    margin-left: .4em;
+}
+
+.avatar img {
+    border-radius: 100%;
+    width: 100%;
+}
+
+.info {
+    flex: 5;
+}
