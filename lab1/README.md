@@ -1,2 +1,2 @@
-# Lab 1
-Here is my entry for our first assignment of this class.
+# 2imd-php-lab1-starter
+## Bekijk de video instructies op Canvas voor een duidelijke beschrijving van dit labo
