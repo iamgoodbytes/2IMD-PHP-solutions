@@ -1,9 +1,4 @@
 <?php
-
-    // Peventing Undefined variables
-    $username = "";
-    $password = "";
-
     
     function canLogin($username,$password) {
 
@@ -18,17 +13,16 @@
         //er is verzonden!
         $username = $_POST['username'];
         $password = $_POST['password']; 
-    }
-
-    if (canLogin($username,$password)){
+        if (canLogin($username,$password)){
         
-        //login
-        session_start();
-        $_SESSION["username"] = $username;
-
-    } else {
-
-        $error = true;
+            //login
+            session_start();
+            $_SESSION["username"] = $username;
+    
+        } else {
+    
+            $error = true;
+        }
     }
 
 ?>
@@ -51,11 +45,11 @@
         <a href="#">Try prime</a>
         <a href="#" class="loggedIn">
             <?php if (isset($_SESSION['username'])): ?>
-                <div class="user--avatar"><img src="images/php.png" alt=""></div>
+                <div class="user--avatar"><img src="images/php.png" alt="profile image"></div>
                  <h3 class="user--name"><?php echo $_SESSION['username'] ?></h3>
                  <span class="user--status">Watching Goodbytes</span>
             <?php else: ?>
-                <div class="user--avatar"><img src="images/guest.png" alt=""></div>
+                <div class="user--avatar"><img src="images/guest.png" alt="Guest image"></div>
                 <h3 class="user--name" style="margin:auto;">Not logged in</h3>
             <?php endif; ?>
         </a>
@@ -64,6 +58,16 @@
     </header>
 
     <div id="app">
+    <?php if(isset($_SESSION)): ?>
+
+        <div id="loginForm">
+            <img src="images/php.png" style="display: block; margin: 0 auto; width: 150px;" alt="profile Image">
+            <!-- Inline style gebruikt omdat hij de CSS niet uitleest eens de Session gestart is, Werkt in HTML en CSS alleen Perfect -->
+            <h1>Welcome <?php echo $_SESSION['username'] ?></h1>
+        </div>
+
+    <?php else: ?>
+
         <form id="loginForm" action="index.php" method="post">
             <h1>Log in to Twitch</h1>
             <nav class="nav--login">
@@ -71,9 +75,9 @@
                 <a href="#" id="tabSignIn">Sign up</a>
             </nav>
 
-            <?php if(isset($error)): ?>
-            <div class="alert">That password was incorrect. Please try again</div>
-            <?php endif; ?>
+        <?php if(isset($error)): ?>
+                <div class="alert">That password was incorrect. Please try again</div>
+        <?php endif; ?>
 
         <div class="form form--login">
             <label for="username">Username</label>
@@ -96,6 +100,8 @@
         
         <a href="" class="btn" id="btnSubmit" onclick='document.forms["loginForm"].submit(); return false;'>Log In</a>
         </form>
+    <?php endif; ?>
+
     </div>
     
     

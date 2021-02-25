@@ -27,6 +27,14 @@ h1
   text-align: center;
 }
 
+img
+{
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+}
+/* Blijkt niet te werken als de session gestart is ? */
+
 .alert
 {
   background-color: #EFEEF1;
