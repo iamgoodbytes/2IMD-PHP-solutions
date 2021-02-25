@@ -16,3 +16,5 @@
 ## List of contributors
 - 🔫 [Jake Darb](https://github.com/JakeDarb)
 - 🔫 [bobstorms](https://github.com/bobstorms)
+- 🔫 [Serat0](https://github.com/Serat0)
+- 🔫 [Trewep](https://github.com/Trewep)
