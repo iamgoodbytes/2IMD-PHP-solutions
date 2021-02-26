@@ -29,6 +29,10 @@
         $loggedin = true;
     }
 
+    if (!empty($_GET)) {
+        $page = $_GET["page"];
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -45,9 +49,9 @@
     <?php if ($loggedin): ?>
         <header>
         <nav class="nav">
-            <a href="#">Browse</a>
-            <a href="#">Get desktop</a>
-            <a href="#">Try prime</a>
+            <a href="?page=browse">Browse</a>
+            <a href="?page=getdesktop">Get desktop</a>
+            <a href="?page=tryprime">Try prime</a>
             <a href="#" class="loggedIn">
                 <div class="user--avatar"><img src="images/php.png" alt=""></div>
                 <h3 class="user--name"><?php echo $_SESSION['username'] ?></h3>
@@ -59,6 +63,9 @@
     <?php endif; ?>
 
     <div id="app">
+        
+        <?php if(!$loggedin): ?>
+
         <form id="loginForm" action="index.php" method="post">
             <h1>Log in to Twitch</h1>
             <nav class="nav--login">
@@ -91,6 +98,30 @@
 
             <input type="submit" value="Log In" class="btn" id="btnSubmit"/>
         </form>
+
+        <?php else: ?>
+
+        <h1>
+            <?php
+
+                switch ($page) {
+                    case "browse":
+                        echo "Browse some streamers! 🕹";
+                        break;
+                    case "getdesktop":
+                        echo "Getting the desktop app! 💻";
+                        break;
+                    case "tryprime":
+                        echo "Let's try prime! ✌🏻";
+                        break;
+                    default:
+                        echo "Welcome to Twitch!";
+                }
+
+            ?>
+        </h1>
+
+        <?php endif; ?>
     </div>
     
     
