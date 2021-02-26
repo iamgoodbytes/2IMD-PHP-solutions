@@ -1,11 +1,8 @@
 <?php
 
-    // Peventing Undefined variables
-    $username = "";
-    $password = "";
-
+    session_start();
     
-    function canLogin($username,$password) {
+    function canLogin($username, $password) {
 
         if ($username === "Development4" && $password == "IMD") {
             return true; 
@@ -28,6 +25,10 @@
         }
     }
 
+    if (isset($_SESSION["username"])) {
+        $loggedin = true;
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -36,13 +37,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css
-    ">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Twitch | Login</title>
 </head>
 <body>
 
-    <?php if (isset($_SESSION['username'])): ?>
+    <?php if ($loggedin): ?>
         <header>
         <nav class="nav">
             <a href="#">Browse</a>
