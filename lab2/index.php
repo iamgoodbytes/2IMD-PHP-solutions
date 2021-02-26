@@ -12,7 +12,7 @@ if(isset($_SESSION["username"])){
 //Function to check if username and password are correct
 function canLogin($username, $password)
 {
-  if ($username === "ninja" && $password === "12345") {
+  if ($username === "Development4" && $password === "IMD") {
     return true;
   } else {
     return false;
@@ -67,7 +67,7 @@ if ($loggedin){
 <head>
   <meta charset="UTF-8">
   <title>CodePen - twitch login</title>
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="css/style.css">
 
 </head>
 
