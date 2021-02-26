@@ -6,9 +6,15 @@
         ];
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT, $options);
 
-        $conn = new mysqli("localhost", "admin", "", "test");
+        $conn = new PDO("mysql:host=localhost;dbname=test", "admin", "");
+        $query = $conn->prepare("INSERT INTO users (email, password) VALUES (:email, :password)");        
+        $query->bindValue(":email", $email);
+        $query->bindValue(":password", $password);
+        $query->execute();
+        /*$conn = new mysqli("localhost", "admin", "", "test");
         $result = $conn->query("INSERT INTO users (email, password) VALUES ('".$conn->real_escape_string($email)."', '".$conn->real_escape_string($password)."')");
         var_dump($result);
+        */
     }
 ?>
 <!DOCTYPE html>

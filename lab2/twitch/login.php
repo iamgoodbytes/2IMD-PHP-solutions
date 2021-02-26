@@ -12,11 +12,24 @@ if(isset($_SESSION["username"])){
 //Function to check if username and password are correct
 function canLogin($username, $password)
 {
-  if ($username === "ninja" && $password === "12345") {
-    return true;
-  } else {
+  $conn = new PDO("mysql:host=localhost;dbname=test", "admin", "");
+  $statement = $conn->prepare("SELECT * FROM users WHERE email = :email");
+  $statement->bindValue(":email", $username);
+  $statement->execute();
+  $user = $statement->fetch();
+  $hash = $user["password"];
+  
+  if(!$user){
     return false;
   }
+
+  if( password_verify($password, $hash)){
+    return true;
+  }
+  else{
+    return false;
+  }
+  
 }
 
 //Check if the form is sended
