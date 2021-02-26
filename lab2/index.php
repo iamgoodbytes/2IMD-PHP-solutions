@@ -18,17 +18,14 @@
         //er is verzonden!
         $username = $_POST['username'];
         $password = $_POST['password']; 
-    }
 
-    if (canLogin($username,$password)){
-        
-        //login
-        session_start();
-        $_SESSION["username"] = $username;
-
-    } else {
-
-        $error = true;
+        if (canLogin($username, $password)) {
+            //login
+            session_start();
+            $_SESSION["username"] = $username;
+        } else {
+            $error = true;
+        }
     }
 
 ?>
@@ -44,24 +41,22 @@
     <title>Document</title>
 </head>
 <body>
-    <header>
-    <nav class="nav">
-        <a href="#">Browse</a>
-        <a href="#">Get desktop</a>
-        <a href="#">Try prime</a>
-        <a href="#" class="loggedIn">
-            <?php if (isset($_SESSION['username'])): ?>
+
+    <?php if (isset($_SESSION['username'])): ?>
+        <header>
+        <nav class="nav">
+            <a href="#">Browse</a>
+            <a href="#">Get desktop</a>
+            <a href="#">Try prime</a>
+            <a href="#" class="loggedIn">
                 <div class="user--avatar"><img src="images/php.png" alt=""></div>
-                 <h3 class="user--name"><?php echo $_SESSION['username'] ?></h3>
-                 <span class="user--status">Watching Goodbytes</span>
-            <?php else: ?>
-                <div class="user--avatar"><img src="images/guest.png" alt=""></div>
-                <h3 class="user--name" style="margin:auto;">Not logged in</h3>
-            <?php endif; ?>
-        </a>
-        <a href="index.php">Log out?</a>
-    </nav>    
-    </header>
+                <h3 class="user--name"><?php echo $_SESSION['username'] ?></h3>
+                <span class="user--status">Watching Goodbytes</span>
+            </a>
+            <a href="index.php">Log out?</a>
+        </nav>    
+        </header>
+    <?php endif; ?>
 
     <div id="app">
         <form id="loginForm" action="index.php" method="post">
