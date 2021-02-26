@@ -53,7 +53,7 @@
                 <h3 class="user--name"><?php echo $_SESSION['username'] ?></h3>
                 <span class="user--status">Watching Goodbytes</span>
             </a>
-            <a href="index.php">Log out?</a>
+            <a href="logout.php">Log out?</a>
         </nav>    
         </header>
     <?php endif; ?>
@@ -70,26 +70,26 @@
             <div class="alert">That password was incorrect. Please try again</div>
             <?php endif; ?>
 
-        <div class="form form--login">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username">
-        
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password">
-        </div>
-        
-        <div class="form form--signup hidden">
-            <label for="username2">Username</label>
-            <input type="text" id="username2">
-        
-            <label for="password2">Password</label>
-            <input type="password" id="password2">
+            <div class="form form--login">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
             
-            <label for="email">Email</label>
-            <input type="text" id="email">
-        </div>
-        
-        <a href="" class="btn" id="btnSubmit" onclick='document.forms["loginForm"].submit(); return false;'>Log In</a>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+            </div>
+            
+            <div class="form form--signup hidden">
+                <label for="username2">Username</label>
+                <input type="text" id="username2">
+            
+                <label for="password2">Password</label>
+                <input type="password" id="password2">
+                
+                <label for="email">Email</label>
+                <input type="text" id="email">
+            </div>
+
+            <input type="submit" value="Log In" class="btn" id="btnSubmit"/>
         </form>
     </div>
     
