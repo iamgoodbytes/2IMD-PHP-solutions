@@ -1,5 +1,3 @@
-<?php ?>
-
 <section class="header"><!--
  <div class="window__actions"><i class="ion-record red"></i><i class="ion-record yellow"></i><i class="ion-record green"></i></div>
 -->

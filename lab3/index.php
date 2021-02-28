@@ -1,8 +1,11 @@
 <?php 
-  include("functions.inc.php"); 
+  session_start();
+  include("functions.inc.php");
   include("database/connection.php");
 
+
   //fetchArtists();
+  //fetchPlaylists();
 
   $query = $database->prepare("select * from artists");
   $query->execute();

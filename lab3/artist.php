@@ -1,7 +1,12 @@
 <?php
-    include("functions.inc.php");
-    print_r($_GET['id']);
-
+  session_start();
+  include("functions.inc.php");
+  include("database/connection.php");
+  print_r($_GET['id']);
+  
+  $query = $database->prepare("select * from playlists");
+  $query->execute();
+  $playlists = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -49,10 +54,9 @@
  aria-controls="playlists">Playlists
 </div>
 <div class="collapse in" id="playlists">
-
-<a href="#" class="navigation__list__item"><i class="ion-ios-musical-notes"></i><span>Playlist name goes here</span></a>
-
-</a>
+  <?php foreach($playlists as $key => $playlists): ?>
+    <a href="#" class="navigation__list__item"><i class="ion-ios-musical-notes"></i><span><?php echo $playlists["name"] ?></span></a>
+  <?php endforeach; ?>
 </div>
 </div>
 <!-- / -->

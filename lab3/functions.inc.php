@@ -30,4 +30,11 @@
         }
     }
 */
+
+    function fetchPlaylists(){
+        include("database/connection.php");
+        $query = $database->prepare("select * from playlists");
+        $query->execute();
+        
+    }
 ?>
