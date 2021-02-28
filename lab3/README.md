@@ -8,5 +8,5 @@ Split your work in levels. Possible levels are:
 - looping over and printing artists
 - linking an artist to the artist.php page by using a $_GET parameter
 - printing artist details in artist.php
-- building the user registration in register.php (use bcrypt!)
-- building the user login in login.php
+- ☑ building the user registration in register.php (use bcrypt!)
+- ☑ building the user login in login.php
