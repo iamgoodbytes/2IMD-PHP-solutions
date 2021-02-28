@@ -1,6 +1,6 @@
 # 2imd-php-lab3-starter
 ## Tip 1: import spotify_faker_data.sql
-The .sql file contains all data you need for this lab. Just import it through phpmyadmin or your favourite mysql client.
+☑ The .sql file contains all data you need for this lab. Just import it through phpmyadmin or your favourite mysql client.
 
 ## Tip 2: work in levels
 Split your work in levels. Possible levels are:
