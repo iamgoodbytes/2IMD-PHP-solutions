@@ -1,3 +1,19 @@
+<?php 
+  include("functions.inc.php"); 
+  include("database/connection.php");
+
+  //fetchArtists();
+
+  $query = $database->prepare("select * from artists");
+  $query->execute();
+  $artist = $query->fetchAll(PDO::FETCH_ASSOC);
+
+  $query = $database->prepare("select * from playlists");
+  $query->execute();
+  $playlists = $query->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +62,9 @@
   <div class="collapse in" id="playlists">
 
   <!-- LOOP OVER PLAYLISTS -->
-  <a href="#" class="navigation__list__item"><i class="ion-ios-musical-notes"></i><span>Playlist name goes here</span></a>
+  <?php foreach($playlists as $key => $playlists): ?>
+    <a href="#" class="navigation__list__item"><i class="ion-ios-musical-notes"></i><span><?php echo $playlists["name"] ?></span></a>
+  <?php endforeach; ?>
   <!-- END LOOP -->
   </a>
   </div>
@@ -70,13 +88,14 @@
 <div role="tabpanel" class="tab-pane" id="related-artists">
   <div class="media-cards">
     <!-- START ARTIST LOOP -->
-    
+    <?php foreach($artist as $key => $artist): ?>
           <div class="media-card">
-            <div class="media-card__image" style="background-image: url(https://loremflickr.com/320/320/1?lock=1);">
+            <div class="media-card__image" style="background-image: url(<?php echo $artist["cover"]?>;">
               <i class="ion-ios-play"></i>
             </div>
-            <a href="artist.php?id=1" class="media-card__footer">Eveline Collins PhD</a>
+            <a href="artist.php?id=<?php echo $artist["id"] ?>" class="media-card__footer"><?php echo $artist["name"] ?></a>
           </div>
+    <?php endforeach; ?>
     
     <!-- END ARTIST LOOP -->
   </div>

@@ -1,3 +1,9 @@
+<?php
+    include("functions.inc.php");
+    print_r($_GET['id']);
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
