@@ -14,6 +14,7 @@ if (!empty($_POST)) {
 		$query->bindValue(":email", $email);
 		$query->bindValue(":password", $password);
 		$query->execute();
+		header('Location: login.php');
 	} else {
 		$error = "Passwords don't match";
 	}
