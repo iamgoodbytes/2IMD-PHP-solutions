@@ -75,7 +75,14 @@ h1
   display: block;
   padding: 0.5em;
   text-decoration: none;
+<<<<<<< HEAD
   border-radius: 5px;
+=======
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 1em;
+>>>>>>> d000e51f808279bd2495d98e19dada5970351674
 }
 
 .nav--login
