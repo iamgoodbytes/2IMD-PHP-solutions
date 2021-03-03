@@ -12,9 +12,6 @@ if(isset($_SESSION["username"])){
 //Function to check if username and password are correct
 function canLogin($username, $password)
 {
-<<<<<<< HEAD:lab2/index.php
-  if ($username === "Development4" && $password === "IMD") {
-=======
   $conn = new PDO("mysql:host=localhost;dbname=test", "admin", "");
   $statement = $conn->prepare("SELECT * FROM users WHERE email = :email");
   $statement->bindValue(":email", $username);
@@ -27,7 +24,6 @@ function canLogin($username, $password)
   }
 
   if( password_verify($password, $hash)){
->>>>>>> TwitchVideoles:lab2/twitch/login.php
     return true;
   }
   else{
