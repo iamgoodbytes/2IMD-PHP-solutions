@@ -2,6 +2,8 @@
 session_start();
 if(isset($_SESSION["email"])){
   echo "Welcome";
+  $conn = new PDO("mysql:host=localhost;dbname=test", "admin", "");
+  $sql = "SELECT name,cover FROM `artists`";
 }
 else{
   header('Location: login.php');
@@ -79,14 +81,14 @@ else{
 <div role="tabpanel" class="tab-pane" id="related-artists">
   <div class="media-cards">
     <!-- START ARTIST LOOP -->
-    
+    <?php foreach($result = $conn->query($sql) as $row): ?>
           <div class="media-card">
-            <div class="media-card__image" style="background-image: url(https://loremflickr.com/320/320/1?lock=1);">
+            <div class="media-card__image" style="background-image: url(<?php echo $row["cover"]; ?>);">
               <i class="ion-ios-play"></i>
             </div>
-            <a href="artist.php?id=1" class="media-card__footer">Eveline Collins PhD</a>
+            <a href="artist.php?id=1" class="media-card__footer"><?php echo $row["name"]; ?></a>
           </div>
-    
+    <?php endforeach; ?>
     <!-- END ARTIST LOOP -->
   </div>
 </div>
