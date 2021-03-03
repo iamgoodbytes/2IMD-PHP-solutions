@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION["email"])) {
   $conn = new PDO("mysql:host=localhost;dbname=test", "admin", "");
-  $sql = "SELECT name,cover FROM `artists`";
+  $sql = "SELECT * FROM `artists`";
   $sqlPlaylist = "SELECT name FROM `playlists`";
 } else {
   header('Location: login.php');
@@ -84,7 +84,7 @@ if (isset($_SESSION["email"])) {
               <div class="media-card__image" style="background-image: url(<?php echo $row["cover"]; ?>);">
                 <i class="ion-ios-play"></i>
               </div>
-              <a href="artist.php?id=1" class="media-card__footer"><?php echo $row["name"]; ?></a>
+              <a href="artist.php?id=<?php echo $row["id"] ?>" class="media-card__footer"><?php echo $row["name"]; ?></a>
             </div>
           <?php endforeach; ?>
           <!-- END ARTIST LOOP -->
