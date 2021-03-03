@@ -3,6 +3,7 @@ $id = $_GET["id"];
 $conn = new PDO("mysql:host=localhost;dbname=test", "admin", "");
 $sql = "SELECT * FROM `artists` WHERE id = $id";
 $sqlAlbums = "SELECT * FROM `albums` WHERE artist_id = $id";
+$sqlPlaylist = "SELECT name FROM `playlists`";
 
 ?>
 <!DOCTYPE html>
@@ -46,9 +47,9 @@ $sqlAlbums = "SELECT * FROM `albums` WHERE artist_id = $id";
           <div class="navigation__list__header" role="button" data-toggle="collapse" href="#playlists" aria-expanded="true" aria-controls="playlists">Playlists
           </div>
           <div class="collapse in" id="playlists">
-
-            <a href="#" class="navigation__list__item"><i class="ion-ios-musical-notes"></i><span>Playlist name goes here</span></a>
-
+            <?php foreach ($conn->query($sqlPlaylist) as $row) : ?>
+              <a href="#" class="navigation__list__item"><i class="ion-ios-musical-notes"></i><span><?php echo $row["name"] ?></span></a>
+            <?php endforeach; ?>
             </a>
           </div>
         </div>
@@ -93,16 +94,16 @@ $sqlAlbums = "SELECT * FROM `albums` WHERE artist_id = $id";
         <div class="artist__content">
           <div class="tab-content">
             <!-- Overview -->
-            <div role="tabpanel" class="tab-pane active" id="artist-overview">
-              <div class="overview">
-                <div class="overview__albums">
-                  <div class="overview__albums__head"><span class="section-title">Albums</span><span class="view-type"><i class="fa fa-list list active"></i><i class="fa fa-th-large card"></i></span>
-                  </div>
+            <?php foreach ($result = $conn->query($sqlAlbums) as $row) : ?>
+              <div role="tabpanel" class="tab-pane active" id="artist-overview">
+                <div class="overview">
+                  <div class="overview__albums">
+                    <div class="overview__albums__head"><span class="section-title">Albums</span><span class="view-type"><i class="fa fa-list list active"></i><i class="fa fa-th-large card"></i></span>
+                    </div>
 
-                  <div class="album">
-                    <?php foreach ($result = $conn->query($sqlAlbums) as $row) : ?>
+                    <div class="album">
                       <div class="album__info">
-                        <div class="album__info__art"><img src="<?php echo $row["cover"]; ?>" alt="When It's Dark Out" /></div>
+                        <div class="album__info__art"><img src="<?php echo $row["cover"]; ?>" alt="<?php echo $row["description"]; ?>" /></div>
                         <div class="album__info__meta">
                           <div class="album__year"><?php echo $row["year"]; ?></div>
                           <div class="album__name"><?php echo $row["title"]; ?></div>
@@ -110,33 +111,37 @@ $sqlAlbums = "SELECT * FROM `albums` WHERE artist_id = $id";
                           </div>
                         </div>
                       </div>
-                    <?php endforeach; ?>
-                    <div class="album__tracks">
-                      <div class="tracks">
-                        <div class="tracks__heading">
-                          <div class="tracks__heading__number">#</div>
-                          <div class="tracks__heading__title">Song</div>
-                          <div class="tracks__heading__length"><i class="ion-ios-stopwatch-outline"></i></div>
-                          <div class="tracks__heading__popularity"><i class="ion-thumbsup"></i></div>
+                      <div class="album__tracks">
+                        <div class="tracks">
+                          <div class="tracks__heading">
+                            <div class="tracks__heading__number">#</div>
+                            <div class="tracks__heading__title">Song</div>
+                            <div class="tracks__heading__length"><i class="ion-ios-stopwatch-outline"></i></div>
+                            <div class="tracks__heading__popularity"><i class="ion-thumbsup"></i></div>
+                          </div>
+
+                          <?php 
+                          $id2 = $row["id"];
+                          $sqlTracks = "SELECT * FROM `tracks` WHERE album_id = $id2";
+                          ?>
+                          <?php foreach($result = $conn->query($sqlTracks) as $row): ?>
+                          <div class="track">
+                            <div class="track__number"><?php echo $row["id"] ?></div>
+                            <div class="track__added"><i class="ion-checkmark-round added"></i></div>
+                            <div class="track__title"><?php echo $row["title"] ?></div>
+                            <div class="track__explicit"><span class="label">Explicit</span></div>
+                            <div class="track__length">1:11</div>
+                            <div class="track__popularity"><i class="ion-arrow-graph-up-right"></i></div>
+                          </div>
+                          <?php endforeach; ?>
                         </div>
-
-
-                        <div class="track">
-                          <div class="track__number">1</div>
-                          <div class="track__added"><i class="ion-checkmark-round added"></i></div>
-                          <div class="track__title">Track title here</div>
-                          <div class="track__explicit"><span class="label">Explicit</span></div>
-                          <div class="track__length">1:11</div>
-                          <div class="track__popularity"><i class="ion-arrow-graph-up-right"></i></div>
-                        </div>
-
                       </div>
                     </div>
-                  </div>
 
+                  </div>
                 </div>
               </div>
-            </div>
+            <?php endforeach; ?>
             <!-- / -->
             <!-- Related Artists -->
             <div role="tabpanel" class="tab-pane" id="related-artists">
