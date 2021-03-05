@@ -1,7 +1,6 @@
 <?php
 
 	session_start();
-	include_once("functions.inc.php");
 
 	if($_SESSION["loggedin"]) {
 		header("Location: index.php");
@@ -12,6 +11,8 @@
 
 		$email = $_POST["email"];
 		$password = $_POST["password"];
+
+		include_once("functions.inc.php");
 
 		if(canLogin($email, $password)) {
 			echo "Logged in.";

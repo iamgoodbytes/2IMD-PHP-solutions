@@ -1,7 +1,6 @@
 <?php 
 
 	session_start();
-	include_once("functions.inc.php");
 
 	if(!empty($_POST)) {
 		$email = $_POST["email"];
@@ -16,7 +15,7 @@
 				];
 				$password = password_hash($password, PASSWORD_DEFAULT, $options);
 				
-				$conn = connectDatabase();
+				include_once("database/connection.php");
 				$query = $conn->prepare("insert into users (email, password) values (:email, :password)");
 				$query->bindValue(":email", $email);
 				$query->bindValue(":password", $password);
