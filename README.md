@@ -14,7 +14,7 @@
 - improvements can even include fixing small typos, making code clean, improve the layout, ...
 
 ## List of contributors
+- 🔫🔫 [bobstorms](https://github.com/bobstorms)
 - 🔫 [Jake Darb](https://github.com/JakeDarb)
-- 🔫 [bobstorms](https://github.com/bobstorms)
 - 🔫 [Serat0](https://github.com/Serat0)
 - 🔫 [Trewep](https://github.com/Trewep)
