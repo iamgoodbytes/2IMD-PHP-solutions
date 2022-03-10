@@ -51,9 +51,28 @@ class User
 
     public function canLogin()
     {
+
         // this function should check if a user can login with the password and user provided
         // use password_verify() to verify your user
         // this function should return true or false and nothing else
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("select email, password from users where email = :email");
+        $statement->bindValue("email", $this->email);
+        $statement->execute();
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+        if ($user) {
+            $hash = $user['password'];
+            if (password_verify($this->password, $hash)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+
+            throw new Exception("user does not exist");
+        }
+
+
     }
 
     public static function getUsernamebyId(int $vidId)
@@ -63,7 +82,7 @@ class User
         $statement->bindValue("vidId", $vidId);
         $statement->execute();
         $email = $statement->fetch(PDO::FETCH_OBJ);
-        $username = explode("@", $email->email,2);
+        $username = explode("@", $email->email, 2);
         return $username[0];
 
     }
