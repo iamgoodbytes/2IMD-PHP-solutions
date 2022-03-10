@@ -4,7 +4,6 @@
 
         public static function getInstance(){
             if(self::$conn != null){
-                echo "🚫";
                 // connection found, return connection
                 return self::$conn;
             } else{

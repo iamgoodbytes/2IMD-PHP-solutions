@@ -1,6 +1,7 @@
 <?php
     include_once(__DIR__ . "/helpers/Security.php");
     include_once(__DIR__ . "/classes/Video.php");
+    include_once (__DIR__."/classes/User.php");
 
     // here's a bit of sample code to get your started
     // try to understand the used methods in order to build your own code
@@ -26,7 +27,8 @@
         <iframe width="100%" height="489" src="<?php echo $video['src']?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <h5 class="mt-2 mb-0"><a href="video.php?id="1"><?php echo $video['title']?></a></h5>
-    <a href="feed.php?filteruser=1">Acid 2</a>
+    <a href="feed.php?filteruser=<?php echo $video['user_id']?>"> <?php echo User::getUsernamebyId($video['id']);?></a>
+
     </article>
     <?php endforeach;?>
 </main>
