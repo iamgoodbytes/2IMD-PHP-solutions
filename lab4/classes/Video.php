@@ -14,6 +14,11 @@
 
         public static function getAllByUserId(int $id) {
             // only grab the videos for a certain user
+            $conn = \Db::getInstance();
+            $statement = $conn->prepare("select * from videos where user_id = :id");
+            $statement->bindValue("id", $id);
+            $statement->execute();
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
         }
 
     }

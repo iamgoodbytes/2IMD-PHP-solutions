@@ -6,7 +6,12 @@
     // here's a bit of sample code to get your started
     // try to understand the used methods in order to build your own code
     Security::onlyLoggedInUsers();
-    $videos = Video::getAll();
+    if(!empty($_GET)){
+        $videos = Video::getAllByUserId($_GET['filteruser']);
+    }else{
+        $videos = Video::getAll();
+    }
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
