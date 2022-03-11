@@ -90,7 +90,7 @@ class User
     public function register()
     {
         $options = [
-            'cost' => 15
+            'cost' => 13
         ];
         $password = password_hash($this->password, PASSWORD_DEFAULT, $options);
 
