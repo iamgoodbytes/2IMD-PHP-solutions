@@ -29,7 +29,7 @@ if (!empty($_GET)){
                     allowfullscreen></iframe>
         </div>
         <h5 class="mt-2 mb-0"><?php echo $video['title']?></h5>
-        <a href="feed.php?filteruser=1"><?php echo $username?></a>
+        <a href="feed.php?filteruser=<?php echo $video['user_id']?>"><?php echo $username?></a>
         <form method="post" action="">
             <div class="form-group">
                 <label for="comment">Comment</label>
