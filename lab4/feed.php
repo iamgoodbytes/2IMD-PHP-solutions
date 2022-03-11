@@ -31,7 +31,7 @@
     <div class="youtube-video-container">
         <iframe width="100%" height="489" src="<?php echo $video['src']?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-    <h5 class="mt-2 mb-0"><a href="video.php?id="1"><?php echo $video['title']?></a></h5>
+    <h5 class="mt-2 mb-0"><a href="video.php?id=<?php echo $video['id']?>"><?php echo $video['title']?></a></h5>
     <a href="feed.php?filteruser=<?php echo $video['user_id']?>"> <?php echo User::getUsernamebyId($video['id']);?></a>
 
     </article>
