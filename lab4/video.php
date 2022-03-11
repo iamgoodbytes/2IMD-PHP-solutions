@@ -7,6 +7,7 @@ Security::onlyLoggedInUsers();
 if (!empty($_GET)) {
     $video = Video::getByid($_GET['id']);
     $username = User::getUsernamebyId($_GET['id']);
+    $comments = Comment::getComments($_GET['id']);
 
 }
 if (!empty($_POST)) {
@@ -48,8 +49,9 @@ if (!empty($_POST)) {
         </form>
 
         <ul>
-            <li><strong>email</strong> - lmao! 🤣</li>
-            <li><strong>email</strong> - lmao! 🤣</li>
+            <?php foreach ($comments as $comment):?>
+            <li><strong><?php echo $comment['email']?></strong> - <?php echo $comment['text']?></li>
+            <?php endforeach;?>
         </ul>
 
     </article>

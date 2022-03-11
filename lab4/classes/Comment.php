@@ -73,4 +73,13 @@ class Comment
         $email = $statement->fetch(PDO::FETCH_ASSOC);
             return $email['id'];
     }
+
+    public static function getComments(int $vidid)
+    {
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("select comments.`text`, users.`email` from comments inner join users on comments.`user_id` = users.`id` where video_id = :vidid");
+        $statement->bindValue('vidid', $vidid);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
