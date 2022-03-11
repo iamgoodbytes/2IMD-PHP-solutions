@@ -1,11 +1,20 @@
 <?php
 include_once(__DIR__ . '/helpers/Security.php');
-include_once (__DIR__.'/classes/Video.php');
-include_once (__DIR__.'/classes/User.php');
+include_once(__DIR__ . '/classes/Video.php');
+include_once(__DIR__ . '/classes/User.php');
+include_once(__DIR__ . '/classes/Comment.php');
 Security::onlyLoggedInUsers();
-if (!empty($_GET)){
-   $video =  Video::getByid($_GET['id']);
-   $username = User::getUsernamebyId($_GET['id']);
+if (!empty($_GET)) {
+    $video = Video::getByid($_GET['id']);
+    $username = User::getUsernamebyId($_GET['id']);
+
+}
+if (!empty($_POST)) {
+    $comment = new Comment();
+    $comment->setComment($_POST['comment']);
+    $comment->setUser(Comment::getUserId($_SESSION['user']));
+    $comment->setVideo($_GET['id']);
+    $comment->save();
 }
 ?><!DOCTYPE html>
 <html lang="en">
@@ -24,12 +33,12 @@ if (!empty($_GET)){
 <main>
     <article class="mb-4">
         <div class="youtube-video-container">
-            <iframe width="100%" height="489" src="<?php echo $video['src']?>" frameborder="0"
+            <iframe width="100%" height="489" src="<?php echo $video['src'] ?>" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
         </div>
-        <h5 class="mt-2 mb-0"><?php echo $video['title']?></h5>
-        <a href="feed.php?filteruser=<?php echo $video['user_id']?>"><?php echo $username?></a>
+        <h5 class="mt-2 mb-0"><?php echo $video['title'] ?></h5>
+        <a href="feed.php?filteruser=<?php echo $video['user_id'] ?>"><?php echo $username ?></a>
         <form method="post" action="">
             <div class="form-group">
                 <label for="comment">Comment</label>
