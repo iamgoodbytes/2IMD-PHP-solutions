@@ -83,7 +83,7 @@ class User
         $statement->execute();
         $email = $statement->fetch(PDO::FETCH_OBJ);
         $username = explode("@", $email->email, 2);
-        return $username[0];
+        return htmlspecialchars($username[0]);
 
     }
 

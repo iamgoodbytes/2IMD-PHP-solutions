@@ -38,7 +38,7 @@ if (!empty($_POST)) {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
         </div>
-        <h5 class="mt-2 mb-0"><?php echo $video['title'] ?></h5>
+        <h5 class="mt-2 mb-0"><?php echo htmlspecialchars( $video['title']) ?></h5>
         <a href="feed.php?filteruser=<?php echo $video['user_id'] ?>"><?php echo $username ?></a>
         <form method="post" action="">
             <div class="form-group">
