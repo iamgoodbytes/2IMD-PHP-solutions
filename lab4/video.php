@@ -50,7 +50,7 @@ if (!empty($_POST)) {
 
         <ul>
             <?php foreach ($comments as $comment):?>
-            <li><strong><?php echo $comment['email']?></strong> - <?php echo $comment['text']?></li>
+            <li><strong><?php echo $comment['email']?></strong> - <?php echo htmlspecialchars($comment['text'])?></li>
             <?php endforeach;?>
         </ul>
 
